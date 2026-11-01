@@ -27,6 +27,8 @@ class DC_BOGO_Admin {
 		add_filter( 'post_updated_messages', [ $this, 'customize_cpt_updated_messages' ] );
 		add_filter( 'manage_dc_bogo_rule_posts_columns', [ $this, 'set_custom_cpt_columns' ] );
 		add_action( 'manage_dc_bogo_rule_posts_custom_column', [ $this, 'render_custom_cpt_columns' ], 10, 2 );
+		add_action( 'admin_init', [ $this, 'handle_review_notice_actions' ] );
+		add_action( 'admin_notices', [ $this, 'render_review_notice' ] );
 	}
 
 	/**
@@ -89,6 +91,15 @@ class DC_BOGO_Admin {
 			'dc_bogo_rule',
 			'side',
 			'high'
+		);
+
+		add_meta_box(
+			'dc_bogo_developer_support',
+			__( 'Support & Custom Development', 'dc-bogo-coupons' ),
+			[ $this, 'render_developer_support_metabox' ],
+			'dc_bogo_rule',
+			'side',
+			'low'
 		);
 	}
 
@@ -374,8 +385,26 @@ class DC_BOGO_Admin {
 					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'dc-bogo-coupons' ); ?>">
 				</p>
 			</form>
-			
 
+			<div class="dc-bogo-card" style="margin-top: 24px; border-left: 4px solid #2271b1; background: #fff;">
+				<div class="dc-bogo-card-header" style="border-bottom: 1px solid #e2e8f0; padding: 14px 20px;">
+					<h2 style="margin: 0; font-size: 15px; color: #1d2327;"><?php esc_html_e( 'Developer Support & Custom WooCommerce Development', 'dc-bogo-coupons' ); ?></h2>
+				</div>
+				<div class="dc-bogo-card-body" style="padding: 16px 20px;">
+					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+						<div style="background: #f8fafc; padding: 16px; border-radius: 6px; border: 1px solid #e2e8f0;">
+							<h3 style="margin-top: 0; font-size: 14px; color: #1e293b;">💼 <?php esc_html_e( 'Need Custom Features or Store Setup?', 'dc-bogo-coupons' ); ?></h3>
+							<p style="color: #64748b; font-size: 13px; line-height: 1.5;"><?php esc_html_e( 'Need bespoke BOGO logic, checkout customizations, or custom WooCommerce plugin development? Hire the creator of DC BOGO directly.', 'dc-bogo-coupons' ); ?></p>
+							<a href="https://www.ramira.in/contact/" target="_blank" class="button button-primary" style="font-weight: 500;"><?php esc_html_e( 'Contact / Hire Developer', 'dc-bogo-coupons' ); ?> &rarr;</a>
+						</div>
+						<div style="background: #f8fafc; padding: 16px; border-radius: 6px; border: 1px solid #e2e8f0;">
+							<h3 style="margin-top: 0; font-size: 14px; color: #1e293b;">☕ <?php esc_html_e( 'Support Free Plugin Development', 'dc-bogo-coupons' ); ?></h3>
+							<p style="color: #64748b; font-size: 13px; line-height: 1.5;"><?php esc_html_e( 'DC BOGO is 100% free with all category rules unlocked. If it brings sales to your store, consider tipping or supporting development.', 'dc-bogo-coupons' ); ?></p>
+							<a href="https://www.ramira.in/support/" target="_blank" class="button button-secondary" style="font-weight: 500;"><?php esc_html_e( 'Support & Donate', 'dc-bogo-coupons' ); ?> ❤️</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<?php
 	}
@@ -949,5 +978,132 @@ class DC_BOGO_Admin {
 				echo '</label>';
 				break;
 		}
+	}
+
+	/**
+	 * Render Developer Support & Custom Work sidebar metabox on rule edit screen.
+	 */
+	public function render_developer_support_metabox() {
+		?>
+		<div class="dc-bogo-dev-sidebar-box" style="padding: 4px 2px;">
+			<div style="margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #e0e0e0;">
+				<strong style="display: block; margin-bottom: 5px; color: #1d2327;">💼 <?php esc_html_e( 'Need Custom Features?', 'dc-bogo-coupons' ); ?></strong>
+				<p style="margin: 0 0 10px; font-size: 12px; color: #646970; line-height: 1.4;">
+					<?php esc_html_e( 'Need bespoke BOGO logic, custom discount rules, or WooCommerce store development? Hire the creator of DC BOGO directly.', 'dc-bogo-coupons' ); ?>
+				</p>
+				<a href="https://www.ramira.in/contact/" target="_blank" class="button button-secondary" style="width: 100%; text-align: center; font-weight: 500;">
+					<?php esc_html_e( 'Contact / Hire Developer', 'dc-bogo-coupons' ); ?> &rarr;
+				</a>
+			</div>
+			<div style="margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #e0e0e0;">
+				<strong style="display: block; margin-bottom: 5px; color: #1d2327;">☕ <?php esc_html_e( 'Support Free Development', 'dc-bogo-coupons' ); ?></strong>
+				<p style="margin: 0 0 10px; font-size: 12px; color: #646970; line-height: 1.4;">
+					<?php esc_html_e( 'DC BOGO is 100% free with zero paywalls. If it helps your store grow, consider supporting ongoing development.', 'dc-bogo-coupons' ); ?>
+				</p>
+				<a href="https://www.ramira.in/support/" target="_blank" class="button button-secondary" style="width: 100%; text-align: center; font-weight: 500;">
+					<?php esc_html_e( 'Support & Donate', 'dc-bogo-coupons' ); ?> ❤️
+				</a>
+			</div>
+			<div>
+				<strong style="display: block; margin-bottom: 5px; color: #1d2327;">⭐ <?php esc_html_e( 'Love this Plugin?', 'dc-bogo-coupons' ); ?></strong>
+				<p style="margin: 0 0 8px; font-size: 12px; color: #646970; line-height: 1.4;">
+					<?php esc_html_e( 'A 5-star review on WordPress.org helps an indie developer tremendously!', 'dc-bogo-coupons' ); ?>
+				</p>
+				<a href="https://wordpress.org/support/plugin/dc-bogo-coupons/reviews/#new-post" target="_blank" style="font-size: 12px; text-decoration: none; font-weight: 600; color: #2271b1; display: inline-block;">
+					<?php esc_html_e( 'Leave a 5-Star Rating ★★★★★', 'dc-bogo-coupons' ); ?>
+				</a>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Handle dismissing or snoozing the review notice safely.
+	 */
+	public function handle_review_notice_actions() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			return;
+		}
+
+		if ( isset( $_GET['dc_bogo_dismiss_review'] ) && check_admin_referer( 'dc_bogo_dismiss_review_action' ) ) {
+			update_option( 'dc_bogo_review_dismissed', 'yes' );
+			wp_safe_redirect( remove_query_arg( [ 'dc_bogo_dismiss_review', '_wpnonce' ] ) );
+			exit;
+		}
+
+		if ( isset( $_GET['dc_bogo_snooze_review'] ) && check_admin_referer( 'dc_bogo_snooze_review_action' ) ) {
+			set_transient( 'dc_bogo_review_snooze_' . get_current_user_id(), 'yes', 14 * DAY_IN_SECONDS );
+			wp_safe_redirect( remove_query_arg( [ 'dc_bogo_snooze_review', '_wpnonce' ] ) );
+			exit;
+		}
+	}
+
+	/**
+	 * Render the review notice if criteria are met:
+	 * - Only for store administrators.
+	 * - Only after at least 7 days since activation.
+	 * - Only after at least 1 BOGO rule exists.
+	 * - Not permanently dismissed and not snoozed.
+	 */
+	public function render_review_notice() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			return;
+		}
+
+		// Don't show if permanently dismissed.
+		if ( 'yes' === get_option( 'dc_bogo_review_dismissed' ) ) {
+			return;
+		}
+
+		// Don't show if snoozed.
+		if ( get_transient( 'dc_bogo_review_snooze_' . get_current_user_id() ) ) {
+			return;
+		}
+
+		// Check installation time (minimum 7 days).
+		$first_activated = get_option( 'dc_bogo_first_activated' );
+		if ( ! $first_activated ) {
+			update_option( 'dc_bogo_first_activated', time() );
+			return;
+		}
+
+		if ( ( time() - $first_activated ) < ( 7 * DAY_IN_SECONDS ) ) {
+			return;
+		}
+
+		// Ensure at least 1 rule has been created.
+		$count_rules = wp_count_posts( 'dc_bogo_rule' );
+		$has_rules   = ( ! empty( $count_rules->publish ) && $count_rules->publish > 0 ) || ( ! empty( $count_rules->draft ) && $count_rules->draft > 0 );
+		if ( ! $has_rules ) {
+			return;
+		}
+
+		$dismiss_url = wp_nonce_url( add_query_arg( 'dc_bogo_dismiss_review', 'yes' ), 'dc_bogo_dismiss_review_action' );
+		$snooze_url  = wp_nonce_url( add_query_arg( 'dc_bogo_snooze_review', 'yes' ), 'dc_bogo_snooze_review_action' );
+		?>
+		<div class="notice notice-info dc-bogo-review-notice" style="padding: 14px 18px; border-left-color: #ffb900; background: #fff;">
+			<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+				<div style="max-width: 760px;">
+					<h3 style="margin: 0 0 6px 0; font-size: 14px; font-weight: 600; color: #1d2327;">
+						🌟 <?php esc_html_e( 'Loving DC BOGO Coupons?', 'dc-bogo-coupons' ); ?>
+					</h3>
+					<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #50575e;">
+						<?php esc_html_e( 'Thank you for using DC BOGO Coupons! If this plugin has helped your WooCommerce store run BOGO deals and free gifts, please consider leaving a 5-star review on WordPress.org. Your feedback means the world to an independent developer!', 'dc-bogo-coupons' ); ?>
+					</p>
+				</div>
+				<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+					<a href="https://wordpress.org/support/plugin/dc-bogo-coupons/reviews/#new-post" target="_blank" class="button button-primary" style="background: #ffb900; border-color: #e0a300; color: #000; font-weight: 600;" onclick="window.location.href='<?php echo esc_url( $dismiss_url ); ?>';">
+						<?php esc_html_e( 'Leave a 5-Star Review ★★★★★', 'dc-bogo-coupons' ); ?>
+					</a>
+					<a href="<?php echo esc_url( $snooze_url ); ?>" class="button button-secondary">
+						<?php esc_html_e( 'Remind Me Later', 'dc-bogo-coupons' ); ?>
+					</a>
+					<a href="<?php echo esc_url( $dismiss_url ); ?>" class="button-link" style="color: #646970; text-decoration: none; padding: 4px 8px;">
+						<?php esc_html_e( 'I Already Did', 'dc-bogo-coupons' ); ?>
+					</a>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 }

@@ -6,12 +6,14 @@
   <strong>The minimal, elegant, and powerful solution for creating advanced Buy One, Get One (BOGO) offers and automatic gift promotions in WooCommerce.</strong>
 </p>
 
-[![WordPress.org Plugin](https://img.shields.io/badge/WordPress.org-v1.1.5-21759b.svg?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/dc-bogo-coupons/)
+[![WordPress.org Plugin](https://img.shields.io/badge/WordPress.org-v1.1.7-21759b.svg?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/dc-bogo-coupons/)
 [![Active Installations](https://img.shields.io/badge/Active%20Installs-30%2B-brightgreen.svg?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/dc-bogo-coupons/)
-[![WordPress Compatibility](https://img.shields.io/badge/WordPress-5.0%20--%207.0-blue.svg?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/dc-bogo-coupons/)
-[![WooCommerce Compatibility](https://img.shields.io/badge/WooCommerce-5.0%20--%209.1-96588a.svg?style=for-the-badge&logo=woocommerce&logoColor=white)](https://woocommerce.com/)
+[![WordPress Compatibility](https://img.shields.io/badge/WordPress-5.0%20--%207.1-blue.svg?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/dc-bogo-coupons/)
+[![WooCommerce Compatibility](https://img.shields.io/badge/WooCommerce-5.0%20--%2011.2-96588a.svg?style=for-the-badge&logo=woocommerce&logoColor=white)](https://woocommerce.com/)
 [![HPOS Compatible](https://img.shields.io/badge/HPOS-Compatible-success.svg?style=for-the-badge&logo=woocommerce&logoColor=white)](https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage)
-[![PHP Version](https://img.shields.io/badge/PHP-%3E%3D%207.4-777bb4.svg?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
+[![Support Developer](https://img.shields.io/badge/Donate-Support%20Author-ff69b4.svg?style=for-the-badge)](https://www.ramira.in/support/)
+[![Hire Developer](https://img.shields.io/badge/Hire-Developer-blue.svg?style=for-the-badge)](https://www.ramira.in/contact/)
+[![Rate 5 Stars](https://img.shields.io/badge/Reviews-Rate%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85-yellow.svg?style=for-the-badge)](https://wordpress.org/support/plugin/dc-bogo-coupons/reviews/#new-post)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2%20or%20later-orange.svg?style=for-the-badge)](LICENSE)
 
 <br/>
@@ -22,9 +24,11 @@
 
 <br/><br/>
 
-[**Download from WordPress.org**](https://wordpress.org/plugins/dc-bogo-coupons/) &bull;
-[**Report Bug / Request Feature**](https://github.com/[YOUR-USERNAME]/dc-bogo-coupons/issues) &bull;
-[**WordPress.org Support**](https://wordpress.org/support/plugin/dc-bogo-coupons/) &bull;
+[**Download on WordPress.org**](https://wordpress.org/plugins/dc-bogo-coupons/) &bull;
+[**Hire Developer / Custom Work**](https://www.ramira.in/contact/) &bull;
+[**Support & Donate**](https://www.ramira.in/support/) &bull;
+[**Rate ★★★★★**](https://wordpress.org/support/plugin/dc-bogo-coupons/reviews/#new-post) &bull;
+[**Report Bug / Issue**](https://github.com/Deadpool608/DC-BOGO-coupon/issues) &bull;
 [**Author Website**](https://www.ramira.in/)
 
 </div>

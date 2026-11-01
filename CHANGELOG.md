@@ -6,6 +6,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [1.1.7] - 2026-11-01
+
+### Added
+- Dedicated developer support, custom work inquiry, and donation links to admin settings and rule editor sidebar.
+- Non-intrusive, polite review prompt for store managers after active usage (7+ days and active rules).
+- Quick plugin action and row meta links on the WordPress Plugins screen (Settings, Support / Donate, Hire Developer, Rate ★★★★★).
+
+### Improved
+- Enhanced documentation with direct developer support and freelance inquiry channels.
+
+---
+
+## [1.1.6] - 2026-11-01
+
+### Improved
+- Enhanced plugin discovery and SEO metadata for WooCommerce BOGO and free gift coupon searches.
+- Verified and updated compatibility with WordPress 7.1 and WooCommerce 11.2.
+- Optimized cart notice messaging for free gift qualification and BOGO deals.
+
+### Changed
+- Refined documentation and tags optimization aligned with WordPress.org guidelines.
+
+---
+
 ## [1.1.5] - 2026-08-26
 
 ### Fixed
