@@ -8,6 +8,11 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+'
       - 'v[0-9]+.[0-9]+'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Plugin Version (e.g. 1.1.7). Leave blank to auto-detect from readme.txt.'
+        required: false
+        default: ''
 
 jobs:
   deploy:
@@ -17,9 +22,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Determine Version
+        id: get_version
+        run: |
+          if [ "${{ github.event.inputs.version }}" != "" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.ref_type }}" = "tag" ]; then
+            TAG="${{ github.ref_name }}"
+            echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+          else
+            VERSION=$(grep -i "Stable tag:" readme.txt | awk -F ':[ ]*' '{print $2}' | tr -d '\r\n ')
+            echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Deploy to WordPress.org Plugin Repository
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: dc-bogo-coupons
+          VERSION: ${{ steps.get_version.outputs.version }}
