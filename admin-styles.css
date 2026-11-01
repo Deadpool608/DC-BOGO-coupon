@@ -1,0 +1,9 @@
+.dc-bogo-tab-content {
+	display: none;
+}
+.dc-bogo-tab-content.active {
+	display: block;
+}
+#titlediv, #slugdiv, #postimagediv, #postexcerpt, #revisionsdiv, .wp-editor-container {
+    display: none !important;
+}

@@ -1,0 +1,265 @@
+:root {
+	--dc-primary: #0b6efd;
+	--dc-accent: #17a673;
+	--dc-muted: #6b7280;
+	--dc-bg: #f7fbff;
+	--dc-surface: #ffffff;
+	--dc-border: #e6eef7;
+}
+
+.dc-bogo-progress-bar-container {
+	position: relative;
+	height: 40px;
+	/* increased height to give room for milestone markers */
+	background-color: var(--dc-border);
+	border-radius: 6px;
+	overflow: visible;
+	/* allow milestone markers to overflow and sit above the bar */
+	width: 100%;
+	margin-top: 16px;
+}
+
+/* Wrapper for the bar (light background), inner fill shows progress */
+.dc-bogo-progress-bar {
+	position: relative;
+	background-color: transparent;
+	height: 100%;
+	width: 100%;
+	border-radius: 6px;
+	overflow: visible;
+	/* keep markers visible above the fill */
+}
+
+.dc-bogo-progress-bar-fill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0%;
+	background-color: var(--dc-accent);
+	transition: width 0.45s ease-in-out, background-color 0.2s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 10px;
+	box-sizing: border-box;
+	color: #fff;
+	z-index: 5;
+	/* keep fill behind milestone markers */
+}
+
+.dc-bogo-progress-bar-fill span {
+	font-weight: 700;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.dc-bogo-custom-notice-box {
+	background-color: var(--dc-surface);
+	border: 1px solid var(--dc-border);
+	border-left: 4px solid var(--dc-primary);
+	padding: 14px;
+	margin: 14px 0;
+	border-radius: 8px;
+	box-shadow: 0 6px 18px rgba(11, 27, 46, 0.04);
+	font-size: 0.96em;
+	color: #0f1724;
+}
+
+.dc-bogo-custom-notice-box p.dc-bogo-reminder-text {
+	margin-top: 0;
+	margin-bottom: 10px;
+	line-height: 1.45;
+}
+
+.dc-bogo-milestone {
+	position: absolute;
+	top: -6px;
+	/* lift marker so circle sits above the bar */
+	width: 3px;
+	height: calc(100% + 12px);
+	background-color: rgba(255, 255, 255, 0.85);
+	z-index: 30;
+	/* place well above the fill */
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.12);
+}
+
+.dc-bogo-milestone::before {
+	content: '';
+	position: absolute;
+	top: -12px;
+	left: -8px;
+	width: 20px;
+	height: 20px;
+	background-color: var(--dc-accent);
+	border: 3px solid #fff;
+	/* white border for contrast */
+	border-radius: 50%;
+	z-index: 31;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+}
+
+.dc-bogo-milestone:hover::after {
+	content: attr(title);
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #111827;
+	color: #fff;
+	padding: 6px 10px;
+	border-radius: 4px;
+	white-space: nowrap;
+	font-size: 0.85em;
+	margin-bottom: 6px;
+	opacity: 1;
+	visibility: visible;
+	z-index: 10;
+}
+
+/* Spacing adjustments to make the coupon/pill area feel separated from the bar */
+.dc-bogo-group-pills {
+	margin-bottom: 10px;
+}
+
+.dc-bogo-pill {
+	margin-right: 8px;
+	margin-bottom: 6px;
+	margin-top: 10px;
+}
+
+.dc-bogo-reminder-text {
+	margin-top: 6px;
+	margin-bottom: 8px;
+}
+
+/* Simple popper styling (used by frontend JS) */
+.dc-bogo-popper {
+	animation: dc-bogo-popper-in 0.28s ease-out;
+}
+
+@keyframes dc-bogo-popper-in {
+	from {
+		transform: translateY(6px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+/* Hide progress fill when width is 0 to avoid an 'empty' looking bar */
+.dc-bogo-progress-bar-fill[style*='width: 0%'],
+.dc-bogo-progress-bar-fill[style*='width:0%'] {
+	opacity: 0.95;
+}
+
+/* Savings Notice Box */
+.dc-bogo-savings-notice-box {
+	background: #f0fdf4;
+	/* Light green background */
+	border: 1px solid #bbf7d0;
+	border-radius: 8px;
+	padding: 16px;
+	margin-bottom: 24px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.dc-bogo-savings-item {
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+	color: #166534;
+	/* Dark green text */
+	margin-bottom: 8px;
+}
+
+.dc-bogo-savings-item:last-child {
+	margin-bottom: 0;
+}
+
+.dc-bogo-savings-item .dashicons {
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+	color: #15803d;
+}
+
+.dc-bogo-savings-total {
+	margin-top: 12px;
+	padding-top: 12px;
+	border-top: 1px dashed #bbf7d0;
+	font-weight: 600;
+	color: #14532d;
+	text-align: right;
+}
+
+/* Popper Notification */
+.dc-bogo-popper {
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 500;
+	animation: dc-slide-in 0.3s ease-out forwards;
+}
+
+@keyframes dc-slide-in {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* 'You saved' summary line shown above totals */
+.dc-bogo-saved-line {
+	font-size: 14px;
+	color: var(--dc-accent);
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.dc-bogo-custom-notice-box.dc-bogo-success {
+	border-left-color: var(--dc-accent);
+}
+
+.dc-bogo-applied-notice-text {
+	margin: 0;
+	font-size: 1.1em;
+	line-height: 1.5;
+	color: #0f1724;
+}
+
+.dc-bogo-applied-notice-text strong {
+	color: var(--dc-accent);
+}
+
+/* Highlight "Get" items in the cart */
+
+.dc-bogo-applied-notice {
+	border: 1px solid var(--dc-accent);
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.cart_item.dc-bogo-get-item {
+	background-color: var(--dc-bg);
+	border-left: 4px solid var(--dc-accent);
+}
+
+.dc-bogo-savings-notice-box {
+	background-color: var(--dc-surface);
+	border: 1px solid var(--dc-border);
+	border-left: 4px solid var(--dc-accent);
+	padding: 14px;
+	margin: 14px 0;
+	border-radius: 8px;
+	box-shadow: 0 6px 18px rgba(11, 27, 46, 0.04);
+	font-size: 0.96em;
+	color: #0f1724;
+}
